@@ -1,0 +1,2734 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/18/2021 9:37:16 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SPIEDRA"
+  DTS:CreatorName="SPIEDRA\ZBook"
+  DTS:DTSID="{B03449FD-3D02-47B2-982E-C18FF84545A2}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="5130"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{D31CE8B4-11A8-492B-AB0F-C93FFEF241E2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Flujo de datos - Clientes"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B4858336-7440-4E87-B3A2-6727AB39951F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Flujo de datos - Clientes"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Flujo de datos - Clientes\Destino - Clientes"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destino - Clientes"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DW].[DIM_CLIENTE]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Flujo de datos - Clientes\Destino - Clientes.Connections[OleDbConnection]"
+                  connectionManagerID="{2186E996-18FB-463E-8255-C3891817784F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[spiedra.IF6201_EX2_DW_B97452]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Flujo de datos - Clientes\Destino - Clientes.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Flujo de datos - Clientes\Destino - Clientes.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Flujo de datos - Clientes\Destino - Clientes.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Clientes\Destino - Clientes.Inputs[OLE DB Destination Input].Columns[NOMBRE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NOMBRE"
+                      externalMetadataColumnId="Package\Flujo de datos - Clientes\Destino - Clientes.Inputs[OLE DB Destination Input].ExternalColumns[NOMBRE]"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[NOMBRE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Clientes\Destino - Clientes.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Clientes\Destino - Clientes.Inputs[OLE DB Destination Input].ExternalColumns[NOMBRE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NOMBRE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Flujo de datos - Clientes\Destino - Clientes.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Flujo de datos - Clientes\Destino - Clientes.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Destino - Clientes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Clientes\Destino - Clientes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Destino - Clientes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Clientes\Destino - Clientes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Flujo de datos - Clientes\Origen - Clientes"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Origen - Clientes"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[PELICULAS].[tb_CLIENTE]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Flujo de datos - Clientes\Origen - Clientes.Connections[OleDbConnection]"
+                  connectionManagerID="{14FA2060-2ED6-416A-8FCF-7BA59FC734A6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[spiedra.IF6201_EX2_B97452]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[CEDULA]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[CEDULA]"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[CEDULA]"
+                      name="CEDULA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[NOMBRE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE]"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[NOMBRE]"
+                      name="NOMBRE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[APELLIDO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[APELLIDO]"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[APELLIDO]"
+                      name="APELLIDO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[CORREO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[CORREO]"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[CORREO]"
+                      name="CORREO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[NUMERO_TELEFONO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[NUMERO_TELEFONO]"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[NUMERO_TELEFONO]"
+                      name="NUMERO_TELEFONO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[DIRECCION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[DIRECCION]"
+                      length="100"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].Columns[DIRECCION]"
+                      name="DIRECCION"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[CEDULA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CEDULA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NOMBRE" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[APELLIDO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="APELLIDO" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[CORREO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CORREO" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[NUMERO_TELEFONO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NUMERO_TELEFONO" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output].ExternalColumns[DIRECCION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="DIRECCION" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[CEDULA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[CEDULA]"
+                      name="CEDULA" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[NOMBRE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[NOMBRE]"
+                      name="NOMBRE" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[APELLIDO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[APELLIDO]"
+                      name="APELLIDO" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[CORREO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[CORREO]"
+                      name="CORREO" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[NUMERO_TELEFONO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[NUMERO_TELEFONO]"
+                      name="NUMERO_TELEFONO" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[DIRECCION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[DIRECCION]"
+                      name="DIRECCION" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Flujo de datos - Clientes.Paths[OLE DB Source Output]"
+              endId="Package\Flujo de datos - Clientes\Destino - Clientes.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Flujo de datos - Clientes\Origen - Clientes.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Flujo de datos - Hechos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D15800ED-276F-490E-9DA0-A485A2C0E9FE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Flujo de datos - Hechos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Flujo de datos - Hechos\Destino - Hechos"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destino - Hechos"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DW].[DIM_HECHOS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Flujo de datos - Hechos\Destino - Hechos.Connections[OleDbConnection]"
+                  connectionManagerID="{2186E996-18FB-463E-8255-C3891817784F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[spiedra.IF6201_EX2_DW_B97452]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].Columns[ID_PELICULA]"
+                      cachedDataType="i4"
+                      cachedName="ID_PELICULA"
+                      externalMetadataColumnId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].ExternalColumns[DIM_ID_PELICULA]"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[ID_PELICULA]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].Columns[ID_CLIENTE]"
+                      cachedDataType="i4"
+                      cachedName="ID_CLIENTE"
+                      externalMetadataColumnId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].ExternalColumns[DIM_ID_CLIENTE]"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].Columns[TOTAL_PELICULA_VENDIDA]"
+                      cachedDataType="i4"
+                      cachedName="TOTAL_PELICULA_VENDIDA"
+                      externalMetadataColumnId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].ExternalColumns[TOTAL_PELICULA_VENDIDA]"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[TOTAL_PELICULA_VENDIDA]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].Columns[TOTAL_COMPRAS_REALIZADAS_CLIENTE]"
+                      cachedDataType="i4"
+                      cachedName="TOTAL_COMPRAS_REALIZADAS_CLIENTE"
+                      externalMetadataColumnId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].ExternalColumns[TOTAL_COMPRAS_REALIZADAS_CLIENTE]"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[TOTAL_COMPRAS_REALIZADAS_CLIENTE]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].Columns[ID_VENTA]"
+                      cachedDataType="i4"
+                      cachedName="ID_VENTA"
+                      externalMetadataColumnId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].ExternalColumns[DIM_ID_VENTA]"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[ID_VENTA]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].Columns[ID_TIEMPO]"
+                      cachedDataType="i4"
+                      cachedName="ID_TIEMPO"
+                      externalMetadataColumnId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].ExternalColumns[DIM_ID_TIEMPO]"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[ID_TIEMPO]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].ExternalColumns[DIM_ID_PELICULA]"
+                      dataType="i4"
+                      name="DIM_ID_PELICULA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].ExternalColumns[DIM_ID_CLIENTE]"
+                      dataType="i4"
+                      name="DIM_ID_CLIENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].ExternalColumns[DIM_ID_VENTA]"
+                      dataType="i4"
+                      name="DIM_ID_VENTA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].ExternalColumns[DIM_ID_TIEMPO]"
+                      dataType="i4"
+                      name="DIM_ID_TIEMPO" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].ExternalColumns[TOTAL_PELICULA_VENDIDA]"
+                      dataType="i4"
+                      name="TOTAL_PELICULA_VENDIDA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input].ExternalColumns[TOTAL_COMPRAS_REALIZADAS_CLIENTE]"
+                      dataType="i4"
+                      name="TOTAL_COMPRAS_REALIZADAS_CLIENTE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Flujo de datos - Hechos\Destino - Hechos.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Hechos\Destino - Hechos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Destino - Hechos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Hechos\Destino - Hechos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Flujo de datos - Hechos\Origen - Hechos"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Origen - Hechos"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	V.ID AS ID_VENTA,
+	P.ID AS ID_PELICULA,
+	C.ID AS ID_CLIENTE,
+	V.ID AS ID_TIEMPO,
+	SUM(V.CANTIDAD) OVER(PARTITION BY P.ID) AS TOTAL_PELICULA_VENDIDA,
+	COUNT(V.ID_CLIENTE) OVER(PARTITION BY C.ID) AS TOTAL_COMPRAS_REALIZADAS_CLIENTE
+FROM [PELICULAS].[tb_VENTAS] V
+	JOIN [PELICULAS].[tb_PELICULAS] P
+		ON V.ID_PELICULA = P.ID
+		JOIN [PELICULAS].[tb_CLIENTE] C
+			ON V.ID_CLIENTE = C.ID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Flujo de datos - Hechos\Origen - Hechos.Connections[OleDbConnection]"
+                  connectionManagerID="{14FA2060-2ED6-416A-8FCF-7BA59FC734A6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[spiedra.IF6201_EX2_B97452]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[ID_VENTA]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].ExternalColumns[ID_VENTA]"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[ID_VENTA]"
+                      name="ID_VENTA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[ID_PELICULA]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].ExternalColumns[ID_PELICULA]"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[ID_PELICULA]"
+                      name="ID_PELICULA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                      name="ID_CLIENTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[TOTAL_PELICULA_VENDIDA]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].ExternalColumns[TOTAL_PELICULA_VENDIDA]"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[TOTAL_PELICULA_VENDIDA]"
+                      name="TOTAL_PELICULA_VENDIDA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[TOTAL_COMPRAS_REALIZADAS_CLIENTE]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].ExternalColumns[TOTAL_COMPRAS_REALIZADAS_CLIENTE]"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[TOTAL_COMPRAS_REALIZADAS_CLIENTE]"
+                      name="TOTAL_COMPRAS_REALIZADAS_CLIENTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[ID_TIEMPO]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].ExternalColumns[ID_TIEMPO]"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].Columns[ID_TIEMPO]"
+                      name="ID_TIEMPO"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].ExternalColumns[ID_VENTA]"
+                      dataType="i4"
+                      name="ID_VENTA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].ExternalColumns[ID_PELICULA]"
+                      dataType="i4"
+                      name="ID_PELICULA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                      dataType="i4"
+                      name="ID_CLIENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].ExternalColumns[TOTAL_PELICULA_VENDIDA]"
+                      dataType="i4"
+                      name="TOTAL_PELICULA_VENDIDA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].ExternalColumns[TOTAL_COMPRAS_REALIZADAS_CLIENTE]"
+                      dataType="i4"
+                      name="TOTAL_COMPRAS_REALIZADAS_CLIENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output].ExternalColumns[ID_TIEMPO]"
+                      dataType="i4"
+                      name="ID_TIEMPO" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[ID_VENTA]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[ID_VENTA]"
+                      name="ID_VENTA" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[ID_PELICULA]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[ID_PELICULA]"
+                      name="ID_PELICULA" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                      name="ID_CLIENTE" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[ID_TIEMPO]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[ID_TIEMPO]"
+                      name="ID_TIEMPO" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[TOTAL_PELICULA_VENDIDA]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[TOTAL_PELICULA_VENDIDA]"
+                      name="TOTAL_PELICULA_VENDIDA" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[TOTAL_COMPRAS_REALIZADAS_CLIENTE]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[TOTAL_COMPRAS_REALIZADAS_CLIENTE]"
+                      name="TOTAL_COMPRAS_REALIZADAS_CLIENTE" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Flujo de datos - Hechos.Paths[OLE DB Source Output]"
+              endId="Package\Flujo de datos - Hechos\Destino - Hechos.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Flujo de datos - Hechos\Origen - Hechos.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Flujo de datos - Peliculas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B350C32C-68CD-4A4F-83FF-400B1E8BD217}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Flujo de datos - Peliculas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Flujo de datos - Peliculas\Destino - Peliculas"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destino - Peliculas"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DW].[DIM_PELICULAS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Connections[OleDbConnection]"
+                  connectionManagerID="{2186E996-18FB-463E-8255-C3891817784F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[spiedra.IF6201_EX2_DW_B97452]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].Columns[CODIGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="CODIGO"
+                      externalMetadataColumnId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].ExternalColumns[CODIGO]"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[CODIGO]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].Columns[NOMBRE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="75"
+                      cachedName="NOMBRE"
+                      externalMetadataColumnId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].ExternalColumns[NOMBRE]"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[NOMBRE]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].Columns[IDIOMA]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="IDIOMA"
+                      externalMetadataColumnId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].ExternalColumns[IDIOMA]"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[IDIOMA]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].Columns[LANZAMIENTO]"
+                      cachedDataType="dbDate"
+                      cachedName="LANZAMIENTO"
+                      externalMetadataColumnId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].ExternalColumns[LANZAMIENTO]"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[LANZAMIENTO]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].Columns[PRECIO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="PRECIO"
+                      externalMetadataColumnId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].ExternalColumns[PRECIO]"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[PRECIO]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].ExternalColumns[CODIGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="CODIGO" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].ExternalColumns[NOMBRE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      name="NOMBRE" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].ExternalColumns[PRECIO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="PRECIO" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].ExternalColumns[IDIOMA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="IDIOMA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input].ExternalColumns[LANZAMIENTO]"
+                      dataType="dbDate"
+                      name="LANZAMIENTO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Flujo de datos - Peliculas\Origen - Peliculas"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Origen - Peliculas"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+      [ID]
+      ,[CODIGO]
+      ,[NOMBRE]
+      ,[IDIOMA]
+      ,[LANZAMIENTO]
+      ,[PRECIO]
+  FROM [IF6201_EX2_B97452].[PELICULAS].[tb_PELICULAS]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Connections[OleDbConnection]"
+                  connectionManagerID="{14FA2060-2ED6-416A-8FCF-7BA59FC734A6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[spiedra.IF6201_EX2_B97452]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[CODIGO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].ExternalColumns[CODIGO]"
+                      length="100"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[CODIGO]"
+                      name="CODIGO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[NOMBRE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE]"
+                      length="75"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[NOMBRE]"
+                      name="NOMBRE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[IDIOMA]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].ExternalColumns[IDIOMA]"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[IDIOMA]"
+                      name="IDIOMA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[LANZAMIENTO]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].ExternalColumns[LANZAMIENTO]"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[LANZAMIENTO]"
+                      name="LANZAMIENTO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[PRECIO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].ExternalColumns[PRECIO]"
+                      length="15"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].Columns[PRECIO]"
+                      name="PRECIO"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].ExternalColumns[CODIGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="CODIGO" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      name="NOMBRE" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].ExternalColumns[IDIOMA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="IDIOMA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].ExternalColumns[LANZAMIENTO]"
+                      dataType="dbDate"
+                      name="LANZAMIENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output].ExternalColumns[PRECIO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="PRECIO" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[CODIGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[CODIGO]"
+                      name="CODIGO" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[NOMBRE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="75"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[NOMBRE]"
+                      name="NOMBRE" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[IDIOMA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[IDIOMA]"
+                      name="IDIOMA" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[LANZAMIENTO]"
+                      dataType="dbDate"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[LANZAMIENTO]"
+                      name="LANZAMIENTO" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[PRECIO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[PRECIO]"
+                      name="PRECIO" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Flujo de datos - Peliculas.Paths[OLE DB Source Output]"
+              endId="Package\Flujo de datos - Peliculas\Destino - Peliculas.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Flujo de datos - Peliculas\Origen - Peliculas.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Flujo de datos - Tiempo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C48FE623-57B8-43D2-8656-A8BDAD3B954A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Flujo de datos - Tiempo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Flujo de datos - Tiempo\Destino - Tiempo"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destino - Tiempo"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DW].[DIM_TIEMPO]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Connections[OleDbConnection]"
+                  connectionManagerID="{2186E996-18FB-463E-8255-C3891817784F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[spiedra.IF6201_EX2_DW_B97452]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].Columns[Anio]"
+                      cachedDataType="i4"
+                      cachedName="Anio"
+                      externalMetadataColumnId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].ExternalColumns[ANIO_VENTA]"
+                      lineageId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Output].Columns[Anio]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].Columns[Dia]"
+                      cachedDataType="i4"
+                      cachedName="Dia"
+                      externalMetadataColumnId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].ExternalColumns[DIA_VENTA]"
+                      lineageId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Output].Columns[Dia]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].Columns[Mes]"
+                      cachedDataType="i4"
+                      cachedName="Mes"
+                      externalMetadataColumnId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].ExternalColumns[MES_VENTA]"
+                      lineageId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Output].Columns[Mes]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].Columns[FECHA]"
+                      cachedDataType="dbDate"
+                      cachedName="FECHA"
+                      externalMetadataColumnId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].ExternalColumns[FECHA_VENTA]"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[FECHA]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].ExternalColumns[FECHA_VENTA]"
+                      dataType="dbDate"
+                      name="FECHA_VENTA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].ExternalColumns[ANIO_VENTA]"
+                      dataType="i4"
+                      name="ANIO_VENTA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].ExternalColumns[MES_VENTA]"
+                      dataType="i4"
+                      name="MES_VENTA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input].ExternalColumns[DIA_VENTA]"
+                      dataType="i4"
+                      name="DIA_VENTA" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Flujo de datos - Tiempo\Fecha derivada"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Fecha derivada"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Flujo de datos - Tiempo\Fecha derivada.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Flujo de datos - Tiempo\Fecha derivada.Inputs[Derived Column Input].Columns[FECHA]"
+                      cachedDataType="dbDate"
+                      cachedName="FECHA"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[FECHA]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Flujo de datos - Tiempo\Fecha derivada.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Output].Columns[Anio]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Output].Columns[Anio]"
+                      name="Anio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[YEAR](#{Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[FECHA]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">YEAR(FECHA)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Output].Columns[Mes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Output].Columns[Mes]"
+                      name="Mes"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[MONTH](#{Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[FECHA]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">MONTH(FECHA)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Output].Columns[Dia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Output].Columns[Dia]"
+                      name="Dia"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DAY](#{Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[FECHA]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DAY(FECHA)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Flujo de datos - Tiempo\Fecha derivada.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Flujo de datos - Tiempo\Origen - Tiempo"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Origen - Tiempo"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[PELICULAS].[tb_VENTAS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Connections[OleDbConnection]"
+                  connectionManagerID="{14FA2060-2ED6-416A-8FCF-7BA59FC734A6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[spiedra.IF6201_EX2_B97452]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[ID_PELICULA]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].ExternalColumns[ID_PELICULA]"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[ID_PELICULA]"
+                      name="ID_PELICULA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                      name="ID_CLIENTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[CANTIDAD]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].ExternalColumns[CANTIDAD]"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[CANTIDAD]"
+                      name="CANTIDAD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[TOTAL]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].ExternalColumns[TOTAL]"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[TOTAL]"
+                      name="TOTAL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[FECHA]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].ExternalColumns[FECHA]"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].Columns[FECHA]"
+                      name="FECHA"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].ExternalColumns[ID_PELICULA]"
+                      dataType="i4"
+                      name="ID_PELICULA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                      dataType="i4"
+                      name="ID_CLIENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].ExternalColumns[CANTIDAD]"
+                      dataType="i4"
+                      name="CANTIDAD" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].ExternalColumns[TOTAL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TOTAL" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output].ExternalColumns[FECHA]"
+                      dataType="dbDate"
+                      name="FECHA" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[ID_PELICULA]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[ID_PELICULA]"
+                      name="ID_PELICULA" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                      name="ID_CLIENTE" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[CANTIDAD]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[CANTIDAD]"
+                      name="CANTIDAD" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[TOTAL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[TOTAL]"
+                      name="TOTAL" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[FECHA]"
+                      dataType="dbDate"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[FECHA]"
+                      name="FECHA" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Flujo de datos - Tiempo.Paths[Derived Column Output]"
+              endId="Package\Flujo de datos - Tiempo\Destino - Tiempo.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Flujo de datos - Tiempo\Fecha derivada.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Flujo de datos - Tiempo.Paths[OLE DB Source Output]"
+              endId="Package\Flujo de datos - Tiempo\Fecha derivada.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Flujo de datos - Tiempo\Origen - Tiempo.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Flujo de datos - Ventas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{81229EE9-6622-43C2-86CD-28CA9725B5EB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Flujo de datos - Ventas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Flujo de datos - Ventas\Destino - Ventas"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destino - Ventas"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DW].[DIM_VENTAS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Flujo de datos - Ventas\Destino - Ventas.Connections[OleDbConnection]"
+                  connectionManagerID="{2186E996-18FB-463E-8255-C3891817784F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[spiedra.IF6201_EX2_DW_B97452]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Flujo de datos - Ventas\Destino - Ventas.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Flujo de datos - Ventas\Destino - Ventas.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Flujo de datos - Ventas\Destino - Ventas.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Ventas\Destino - Ventas.Inputs[OLE DB Destination Input].Columns[CANTIDAD]"
+                      cachedDataType="i4"
+                      cachedName="CANTIDAD"
+                      externalMetadataColumnId="Package\Flujo de datos - Ventas\Destino - Ventas.Inputs[OLE DB Destination Input].ExternalColumns[CANTIDAD]"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[CANTIDAD]" />
+                    <inputColumn
+                      refId="Package\Flujo de datos - Ventas\Destino - Ventas.Inputs[OLE DB Destination Input].Columns[TOTAL]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TOTAL"
+                      externalMetadataColumnId="Package\Flujo de datos - Ventas\Destino - Ventas.Inputs[OLE DB Destination Input].ExternalColumns[TOTAL]"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[TOTAL]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Ventas\Destino - Ventas.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Ventas\Destino - Ventas.Inputs[OLE DB Destination Input].ExternalColumns[TOTAL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TOTAL" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Ventas\Destino - Ventas.Inputs[OLE DB Destination Input].ExternalColumns[CANTIDAD]"
+                      dataType="i4"
+                      name="CANTIDAD" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Flujo de datos - Ventas\Destino - Ventas.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Flujo de datos - Ventas\Destino - Ventas.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Destino - Ventas.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Ventas\Destino - Ventas.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Destino - Ventas.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Ventas\Destino - Ventas.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Flujo de datos - Ventas\Origen - Ventas"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Origen - Ventas"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[PELICULAS].[tb_VENTAS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Flujo de datos - Ventas\Origen - Ventas.Connections[OleDbConnection]"
+                  connectionManagerID="{14FA2060-2ED6-416A-8FCF-7BA59FC734A6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[spiedra.IF6201_EX2_B97452]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[ID_PELICULA]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].ExternalColumns[ID_PELICULA]"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[ID_PELICULA]"
+                      name="ID_PELICULA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                      name="ID_CLIENTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[CANTIDAD]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].ExternalColumns[CANTIDAD]"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[CANTIDAD]"
+                      name="CANTIDAD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[TOTAL]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].ExternalColumns[TOTAL]"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[TOTAL]"
+                      name="TOTAL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[FECHA]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].ExternalColumns[FECHA]"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].Columns[FECHA]"
+                      name="FECHA"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].ExternalColumns[ID_PELICULA]"
+                      dataType="i4"
+                      name="ID_PELICULA" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                      dataType="i4"
+                      name="ID_CLIENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].ExternalColumns[CANTIDAD]"
+                      dataType="i4"
+                      name="CANTIDAD" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].ExternalColumns[TOTAL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TOTAL" />
+                    <externalMetadataColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output].ExternalColumns[FECHA]"
+                      dataType="dbDate"
+                      name="FECHA" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[ID_PELICULA]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[ID_PELICULA]"
+                      name="ID_PELICULA" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                      name="ID_CLIENTE" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[CANTIDAD]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[CANTIDAD]"
+                      name="CANTIDAD" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[TOTAL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[TOTAL]"
+                      name="TOTAL" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[FECHA]"
+                      dataType="dbDate"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[FECHA]"
+                      name="FECHA" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Flujo de datos - Ventas.Paths[OLE DB Source Output]"
+              endId="Package\Flujo de datos - Ventas\Destino - Ventas.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Flujo de datos - Ventas\Origen - Ventas.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea - Eliminar datos"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7865346C-46C3-475A-84A1-AFD5247060AF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea - Eliminar datos"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2186E996-18FB-463E-8255-C3891817784F}"
+          SQLTask:SqlStatementSource="DELETE FROM [DW].[DIM_CLIENTE]&#xA;                      DELETE FROM [DW].[DIM_PELICULAS]&#xA;                                            DELETE FROM [DW].[DIM_TIEMPO]&#xA;                                                                  DELETE FROM [DW].[DIM_VENTAS]&#xA;                                                                                        DELETE FROM [DW].[DIM_HECHOS]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C06DCAE0-A88F-45C8-9DAC-ED3E8587B5E9}"
+      DTS:From="Package\Tarea - Eliminar datos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Flujo de datos - Peliculas" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F704415F-2EA4-4F8E-B496-DA44B272EDCC}"
+      DTS:From="Package\Flujo de datos - Peliculas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Flujo de datos - Clientes" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{11B3AB6D-0FA4-4F38-B83B-CC78E0812254}"
+      DTS:From="Package\Flujo de datos - Clientes"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Flujo de datos - Ventas" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{B312909E-D0B2-4DD9-8C79-5DCCF3273459}"
+      DTS:From="Package\Flujo de datos - Ventas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Flujo de datos - Tiempo" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{A1E4B041-65B9-4300-A352-3374BC612148}"
+      DTS:From="Package\Flujo de datos - Tiempo"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Flujo de datos - Hechos" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\Flujo de datos - Peliculas"
+          TopLeft="79.285715635942,111.647060389337" />
+        <AnnotationLayout
+          Text=""
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="28.8,60"
+          Id="0b144582-38ad-4958-be83-75dfec92ba93"
+          TopLeft="338.571434337266,172.058825942472" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Tarea - Eliminar datos"
+          TopLeft="78.571429909492,14.5294119684754" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="173.328572772717,56.1294119684754">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.5176484208619"
+              Start="0,0"
+              End="0,48.0176484208619">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.0176484208619" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Flujo de datos - Clientes"
+          TopLeft="150.714288280935,211.058826489432" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="176.885715635942,153.247060389337">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69.8285726449927,57.8117661000948"
+              Start="0,0"
+              End="69.8285726449927,50.3117661000948">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.9058830500474" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.9058830500474"
+                    Point2="0,28.9058830500474"
+                    Point3="4,28.9058830500474" />
+                  <mssgle:LineSegment
+                    End="65.8285726449927,28.9058830500474" />
+                  <mssgle:CubicBezierSegment
+                    Point1="65.8285726449927,28.9058830500474"
+                    Point2="69.8285726449927,28.9058830500474"
+                    Point3="69.8285726449927,32.9058830500474" />
+                  <mssgle:LineSegment
+                    End="69.8285726449927,50.3117661000948" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Flujo de datos - Ventas"
+          TopLeft="252.142861436824,298.235298300285" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="246.714288280935,252.658826489432">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99.0285731558898,45.5764718108524"
+              Start="0,0"
+              End="99.0285731558898,38.0764718108524">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.7882359054262" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.7882359054262"
+                    Point2="0,22.7882359054262"
+                    Point3="4,22.7882359054262" />
+                  <mssgle:LineSegment
+                    End="95.0285731558898,22.7882359054262" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95.0285731558898,22.7882359054262"
+                    Point2="99.0285731558898,22.7882359054262"
+                    Point3="99.0285731558898,26.7882359054262" />
+                  <mssgle:LineSegment
+                    End="99.0285731558898,38.0764718108524" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Flujo de datos - Tiempo"
+          TopLeft="356.428577498514,380.823534752671" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="345.742861436824,339.835298300285">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105.885716061689,40.9882364523864"
+              Start="0,0"
+              End="105.885716061689,33.4882364523864">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4941182261932" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4941182261932"
+                    Point2="0,20.4941182261932"
+                    Point3="4,20.4941182261932" />
+                  <mssgle:LineSegment
+                    End="101.885716061689,20.4941182261932" />
+                  <mssgle:CubicBezierSegment
+                    Point1="101.885716061689,20.4941182261932"
+                    Point2="105.885716061689,20.4941182261932"
+                    Point3="105.885716061689,24.4941182261932" />
+                  <mssgle:LineSegment
+                    End="105.885716061689,33.4882364523864" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\Flujo de datos - Hechos"
+          TopLeft="432.142864502206,461.882359418902" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="451.628577498514,422.423534752671">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75.3142870036923,39.4588246662312"
+              Start="0,0"
+              End="75.3142870036923,31.9588246662312">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.7294123331156" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.7294123331156"
+                    Point2="0,19.7294123331156"
+                    Point3="4,19.7294123331156" />
+                  <mssgle:LineSegment
+                    End="71.3142870036923,19.7294123331156" />
+                  <mssgle:CubicBezierSegment
+                    Point1="71.3142870036923,19.7294123331156"
+                    Point2="75.3142870036923,19.7294123331156"
+                    Point3="75.3142870036923,23.7294123331156" />
+                  <mssgle:LineSegment
+                    End="75.3142870036923,31.9588246662312" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Flujo de datos - Peliculas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Flujo de datos - Peliculas\Origen - Peliculas"
+          TopLeft="55.7142866630944,34.4117651884944" />
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\Flujo de datos - Peliculas\Destino - Peliculas"
+          TopLeft="319.285719723118,36.7058828677274" />
+        <EdgeLayout
+          Id="Package\Flujo de datos - Peliculas.Paths[OLE DB Source Output]"
+          TopLeft="215.714286663094,56.3588240281109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103.571433060023,0"
+              Start="0,0"
+              End="96.0714330600233,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="96.0714330600233,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Peliculas\Origen - Peliculas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Peliculas\Destino - Peliculas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Flujo de datos - Clientes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\Flujo de datos - Clientes\Origen - Clientes"
+          TopLeft="101.666666666667,94.3333333333333" />
+        <NodeLayout
+          Size="160.8,41.6"
+          Id="Package\Flujo de datos - Clientes\Destino - Clientes"
+          TopLeft="424.666666666667,95.1666666666666" />
+        <EdgeLayout
+          Id="Package\Flujo de datos - Clientes.Paths[OLE DB Source Output]"
+          TopLeft="258.466666666667,115.55">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="166.2,0"
+              Start="0,0"
+              End="158.7,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="158.7,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Clientes\Origen - Clientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Clientes\Destino - Clientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Flujo de datos - Ventas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Flujo de datos - Ventas\Destino - Ventas"
+          TopLeft="549,156" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Flujo de datos - Ventas\Origen - Ventas"
+          TopLeft="160,146" />
+        <EdgeLayout
+          Id="Package\Flujo de datos - Ventas.Paths[OLE DB Source Output]"
+          TopLeft="312,166.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="237,10.0000000000001"
+              Start="0,0"
+              End="229.5,10.0000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="114.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="114.5,0"
+                    Point2="118.5,0"
+                    Point3="118.5,4" />
+                  <mssgle:LineSegment
+                    End="118.5,6.00000000000006" />
+                  <mssgle:CubicBezierSegment
+                    Point1="118.5,6.00000000000006"
+                    Point2="118.5,10.0000000000001"
+                    Point3="122.5,10.0000000000001" />
+                  <mssgle:LineSegment
+                    End="229.5,10.0000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Ventas\Destino - Ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Ventas\Origen - Ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Flujo de datos - Tiempo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Flujo de datos - Tiempo\Origen - Tiempo"
+          TopLeft="137,169" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Flujo de datos - Tiempo\Fecha derivada"
+          TopLeft="399,163" />
+        <EdgeLayout
+          Id="Package\Flujo de datos - Tiempo.Paths[OLE DB Source Output]"
+          TopLeft="292.2,186.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="106.8,0"
+              Start="0,0"
+              End="99.3000000000001,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="99.3000000000001,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Flujo de datos - Tiempo\Destino - Tiempo"
+          TopLeft="654,161" />
+        <EdgeLayout
+          Id="Package\Flujo de datos - Tiempo.Paths[Derived Column Output]"
+          TopLeft="548.6,182.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105.4,0"
+              Start="0,0"
+              End="97.8999999999999,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="97.8999999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Tiempo\Origen - Tiempo">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Tiempo\Destino - Tiempo">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Flujo de datos - Hechos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Flujo de datos - Hechos\Destino - Hechos"
+          TopLeft="642,157" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\Flujo de datos - Hechos\Origen - Hechos"
+          TopLeft="190,161" />
+        <EdgeLayout
+          Id="Package\Flujo de datos - Hechos.Paths[OLE DB Source Output]"
+          TopLeft="344.4,179.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="297.6,0"
+              Start="0,0"
+              End="290.1,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="290.1,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Hechos\Destino - Hechos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Hechos\Origen - Hechos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
