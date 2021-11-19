@@ -1,4 +1,4 @@
-# Examen II - Inteligencia de negocios
+# Examen II (Inteligencia de negocios) - IF6201
 
 ### Proceso:
 
