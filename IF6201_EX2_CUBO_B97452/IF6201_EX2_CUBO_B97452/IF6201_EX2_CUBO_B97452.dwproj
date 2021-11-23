@@ -6,10 +6,71 @@
     <Name>IF6201_EX2_CUBO_B97452.database</Name>
     <FullPath>IF6201_EX2_CUBO_B97452.database</FullPath>
   </Database>
+  <Cubes>
+    <ProjectItem>
+      <Name>IF6201 EX2 DW B97452.cube</Name>
+      <FullPath>IF6201 EX2 DW B97452.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>IF6201 EX2 DW B97452.partitions</Name>
+          <FullPath>IF6201 EX2 DW B97452.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
+  </Cubes>
+  <Dimensions>
+    <ProjectItem>
+      <Name>DIM PELICULAS.dim</Name>
+      <FullPath>DIM PELICULAS.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DIM CLIENTE.dim</Name>
+      <FullPath>DIM CLIENTE.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DIM TIEMPO.dim</Name>
+      <FullPath>DIM TIEMPO.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DIM VENTAS.dim</Name>
+      <FullPath>DIM VENTAS.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DIM HECHOS.dim</Name>
+      <FullPath>DIM HECHOS.dim</FullPath>
+    </ProjectItem>
+  </Dimensions>
+  <DataSources>
+    <ProjectItem>
+      <Name>IF6201 EX2 DW B97452.ds</Name>
+      <FullPath>IF6201 EX2 DW B97452.ds</FullPath>
+    </ProjectItem>
+  </DataSources>
+  <DataSourceViews>
+    <ProjectItem>
+      <Name>IF6201 EX2 DW B97452.dsv</Name>
+      <FullPath>IF6201 EX2 DW B97452.dsv</FullPath>
+    </ProjectItem>
+  </DataSourceViews>
   <Configurations>
     <Configuration>
       <Name>Development</Name>
-      <Options />
+      <Options>
+        <ConnectionMappings>
+          <ConfigurationSetting>
+            <Id>IF6201 EX2 DW B97452</Id>
+            <Name>IF6201 EX2 DW B97452</Name>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=SPIEDRA\MYSSQLSERVER;Integrated Security=SSPI;Initial Catalog=IF6201_EX2_DW_B97452</Value>
+          </ConfigurationSetting>
+        </ConnectionMappings>
+        <ConnectionSecurityMappings>
+          <ConfigurationSetting>
+            <Id>IF6201 EX2 DW B97452</Id>
+            <Name>IF6201 EX2 DW B97452</Name>
+            <Value xsi:type="xsd:int">0</Value>
+          </ConfigurationSetting>
+        </ConnectionSecurityMappings>
+      </Options>
     </Configuration>
   </Configurations>
 </Project>

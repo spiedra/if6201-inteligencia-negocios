@@ -1,0 +1,89 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>IF6201_EX2_CUBO_B97452</Database>
+    <Server>SPIEDRA\MYSSQLSERVER</Server>
+    <ConnectionString>Data Source=SPIEDRA\MYSSQLSERVER;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>AzRJNROsZAXSkUg/405572KkyAY=21/11/2021 10:48:4421/11/2021 10:48:44</TimeStamp>
+        <ID>
+          <String>IF6201 EX2 DW B97452</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>5iyvHNMl1f3sp324b/7/mavH0JA=21/11/2021 10:49:5121/11/2021 10:49:51</TimeStamp>
+        <ID>
+          <String>IF6201 EX2 DW B97452</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>DKxqrPadZQj48wfOsGKH9CpIleo=21/11/2021 10:51:3521/11/2021 10:51:35</TimeStamp>
+        <ID>
+          <String>DIM PELICULAS</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>Lg0dXiRmso8k/dwQWsqavmJ5XhQ=21/11/2021 10:51:5821/11/2021 10:51:58</TimeStamp>
+        <ID>
+          <String>DIM CLIENTE</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>xMEra857DS3gd5O2H858Zy9S2Lk=21/11/2021 10:52:1321/11/2021 10:52:13</TimeStamp>
+        <ID>
+          <String>DIM TIEMPO</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>qAeZ6lBRAIuAwKrgW9JdDLCg94c=21/11/2021 10:52:2721/11/2021 10:52:27</TimeStamp>
+        <ID>
+          <String>DIM VENTAS</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>BYjLog6ug609s+CRR90DqQKJqmY=21/11/2021 10:56:2221/11/2021 10:56:21</TimeStamp>
+        <ID>
+          <String>DIM HECHOS</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>YgGBzrQGbnR1PxoIu+oSfht5npY=21/11/2021 10:57:3021/11/2021 10:57:298cTXja10Gmg8j61tbeGjNIXZd0Q=21/11/2021 10:57:3021/11/2021 10:57:30</TimeStamp>
+        <ID>
+          <String>IF6201 EX2 DW B97452</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>3rbqKXXOpMSdqcTZZR4lxSgCRZg=21/11/2021 10:43:2621/11/2021 10:43:26</TimeStamp>
+      <ID>
+        <String>IF6201_EX2_CUBO_B97452</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2021-11-23T03:50:26.386667Z</LastDeployed>
+</DeploymentSnapshot>

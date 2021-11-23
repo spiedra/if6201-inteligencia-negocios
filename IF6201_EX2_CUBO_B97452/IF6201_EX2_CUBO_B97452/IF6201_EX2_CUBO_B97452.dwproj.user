@@ -3,7 +3,7 @@
     <Configuration>
       <Name>Development</Name>
       <Options>
-        <TargetServer>localhost</TargetServer>
+        <TargetServer>SPIEDRA\MYSSQLSERVER</TargetServer>
         <TargetDatabase>IF6201_EX2_CUBO_B97452</TargetDatabase>
         <StartObject>
           <ObjectId></ObjectId>

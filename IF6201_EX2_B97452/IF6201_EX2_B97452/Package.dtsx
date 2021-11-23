@@ -11,8 +11,8 @@
   DTS:LocaleID="5130"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{D31CE8B4-11A8-492B-AB0F-C93FFEF241E2}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{8CAF30DA-FE81-4F57-B2A1-32B203008D60}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -626,13 +626,18 @@
 	P.ID AS ID_PELICULA,
 	C.ID AS ID_CLIENTE,
 	V.ID AS ID_TIEMPO,
-	SUM(V.CANTIDAD) OVER(PARTITION BY P.ID) AS TOTAL_PELICULA_VENDIDA,
-	COUNT(V.ID_CLIENTE) OVER(PARTITION BY C.ID) AS TOTAL_COMPRAS_REALIZADAS_CLIENTE
+	SUM(V.CANTIDAD) AS TOTAL_PELICULA_VENDIDA,
+	COUNT(V.ID_CLIENTE) AS TOTAL_COMPRAS_REALIZADAS_CLIENTE
 FROM [PELICULAS].[tb_VENTAS] V
 	JOIN [PELICULAS].[tb_PELICULAS] P
 		ON V.ID_PELICULA = P.ID
 		JOIN [PELICULAS].[tb_CLIENTE] C
-			ON V.ID_CLIENTE = C.ID</property>
+			ON V.ID_CLIENTE = C.ID
+GROUP BY 
+V.ID,
+	P.ID ,
+	C.ID ,
+	V.ID</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2189,18 +2194,27 @@ FROM [PELICULAS].[tb_VENTAS] V
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Flujo de datos - Clientes"
+          TopLeft="150.714288280935,211.058826489432" />
+        <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\Flujo de datos - Hechos"
+          TopLeft="432.142864502206,461.882359418902" />
         <NodeLayout
           Size="195.2,41.6"
           Id="Package\Flujo de datos - Peliculas"
           TopLeft="79.285715635942,111.647060389337" />
-        <AnnotationLayout
-          Text=""
-          ParentId="Package"
-          FontInfo="{assembly:Null}"
-          Size="28.8,60"
-          Id="0b144582-38ad-4958-be83-75dfec92ba93"
-          TopLeft="338.571434337266,172.058825942472" />
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Flujo de datos - Tiempo"
+          TopLeft="356.428577498514,380.823534752671" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Flujo de datos - Ventas"
+          TopLeft="252.142861436824,298.235298300285" />
         <NodeLayout
           Size="182.4,41.6"
           Id="Package\Tarea - Eliminar datos"
@@ -2227,10 +2241,6 @@ FROM [PELICULAS].[tb_VENTAS] V
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="192,41.6"
-          Id="Package\Flujo de datos - Clientes"
-          TopLeft="150.714288280935,211.058826489432" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="176.885715635942,153.247060389337">
@@ -2265,10 +2275,6 @@ FROM [PELICULAS].[tb_VENTAS] V
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="187.2,41.6"
-          Id="Package\Flujo de datos - Ventas"
-          TopLeft="252.142861436824,298.235298300285" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="246.714288280935,252.658826489432">
@@ -2303,10 +2309,6 @@ FROM [PELICULAS].[tb_VENTAS] V
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="190.4,41.6"
-          Id="Package\Flujo de datos - Tiempo"
-          TopLeft="356.428577498514,380.823534752671" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="345.742861436824,339.835298300285">
@@ -2341,10 +2343,6 @@ FROM [PELICULAS].[tb_VENTAS] V
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="189.6,41.6"
-          Id="Package\Flujo de datos - Hechos"
-          TopLeft="432.142864502206,461.882359418902" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="451.628577498514,422.423534752671">
@@ -2379,73 +2377,21 @@ FROM [PELICULAS].[tb_VENTAS] V
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text=""
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="28.8,40"
+          Id="0b144582-38ad-4958-be83-75dfec92ba93"
+          TopLeft="338.571434337266,172.058825942472" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Flujo de datos - Peliculas">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="160,41.6"
-          Id="Package\Flujo de datos - Peliculas\Origen - Peliculas"
-          TopLeft="55.7142866630944,34.4117651884944" />
-        <NodeLayout
-          Size="164,41.6"
-          Id="Package\Flujo de datos - Peliculas\Destino - Peliculas"
-          TopLeft="319.285719723118,36.7058828677274" />
-        <EdgeLayout
-          Id="Package\Flujo de datos - Peliculas.Paths[OLE DB Source Output]"
-          TopLeft="215.714286663094,56.3588240281109">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="103.571433060023,0"
-              Start="0,0"
-              End="96.0714330600233,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="96.0714330600233,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Flujo de datos - Peliculas\Origen - Peliculas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Flujo de datos - Peliculas\Destino - Peliculas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\Flujo de datos - Clientes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156.8,41.6"
           Id="Package\Flujo de datos - Clientes\Origen - Clientes"
@@ -2473,25 +2419,14 @@ FROM [PELICULAS].[tb_VENTAS] V
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Flujo de datos - Clientes\Origen - Clientes">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Flujo de datos - Clientes\Destino - Clientes">
     <Properties>
@@ -2505,161 +2440,8 @@ FROM [PELICULAS].[tb_VENTAS] V
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Flujo de datos - Ventas">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="156,41.6"
-          Id="Package\Flujo de datos - Ventas\Destino - Ventas"
-          TopLeft="549,156" />
-        <NodeLayout
-          Size="152,41.6"
-          Id="Package\Flujo de datos - Ventas\Origen - Ventas"
-          TopLeft="160,146" />
-        <EdgeLayout
-          Id="Package\Flujo de datos - Ventas.Paths[OLE DB Source Output]"
-          TopLeft="312,166.8">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="237,10.0000000000001"
-              Start="0,0"
-              End="229.5,10.0000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="114.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="114.5,0"
-                    Point2="118.5,0"
-                    Point3="118.5,4" />
-                  <mssgle:LineSegment
-                    End="118.5,6.00000000000006" />
-                  <mssgle:CubicBezierSegment
-                    Point1="118.5,6.00000000000006"
-                    Point2="118.5,10.0000000000001"
-                    Point3="122.5,10.0000000000001" />
-                  <mssgle:LineSegment
-                    End="229.5,10.0000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Flujo de datos - Ventas\Destino - Ventas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Flujo de datos - Ventas\Origen - Ventas">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Flujo de datos - Tiempo">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="155.2,41.6"
-          Id="Package\Flujo de datos - Tiempo\Origen - Tiempo"
-          TopLeft="137,169" />
-        <NodeLayout
-          Size="149.6,41.6"
-          Id="Package\Flujo de datos - Tiempo\Fecha derivada"
-          TopLeft="399,163" />
-        <EdgeLayout
-          Id="Package\Flujo de datos - Tiempo.Paths[OLE DB Source Output]"
-          TopLeft="292.2,186.8">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="106.8,0"
-              Start="0,0"
-              End="99.3000000000001,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="99.3000000000001,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="159.2,41.6"
-          Id="Package\Flujo de datos - Tiempo\Destino - Tiempo"
-          TopLeft="654,161" />
-        <EdgeLayout
-          Id="Package\Flujo de datos - Tiempo.Paths[Derived Column Output]"
-          TopLeft="548.6,182.8">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="105.4,0"
-              Start="0,0"
-              End="97.8999999999999,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="97.8999999999999,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Flujo de datos - Tiempo\Origen - Tiempo">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Flujo de datos - Tiempo\Destino - Tiempo">
+    design-time-name="Package\Flujo de datos - Clientes\Origen - Clientes">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2677,13 +2459,13 @@ FROM [PELICULAS].[tb_VENTAS] V
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="158.4,41.6"
-          Id="Package\Flujo de datos - Hechos\Destino - Hechos"
-          TopLeft="642,157" />
-        <NodeLayout
           Size="154.4,41.6"
           Id="Package\Flujo de datos - Hechos\Origen - Hechos"
           TopLeft="190,161" />
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Flujo de datos - Hechos\Destino - Hechos"
+          TopLeft="642,157" />
         <EdgeLayout
           Id="Package\Flujo de datos - Hechos.Paths[OLE DB Source Output]"
           TopLeft="344.4,179.8">
@@ -2727,6 +2509,239 @@ FROM [PELICULAS].[tb_VENTAS] V
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Flujo de datos - Peliculas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Flujo de datos - Peliculas\Origen - Peliculas"
+          TopLeft="55.7142866630944,34.4117651884944" />
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\Flujo de datos - Peliculas\Destino - Peliculas"
+          TopLeft="319.285719723118,36.7058828677274" />
+        <EdgeLayout
+          Id="Package\Flujo de datos - Peliculas.Paths[OLE DB Source Output]"
+          TopLeft="215.714286663094,56.3588240281109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103.571433060023,0"
+              Start="0,0"
+              End="96.0714330600233,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="96.0714330600233,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Peliculas\Destino - Peliculas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Peliculas\Origen - Peliculas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Flujo de datos - Tiempo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Flujo de datos - Tiempo\Origen - Tiempo"
+          TopLeft="137,169" />
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Flujo de datos - Tiempo\Destino - Tiempo"
+          TopLeft="654,161" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Flujo de datos - Tiempo\Fecha derivada"
+          TopLeft="399,163" />
+        <EdgeLayout
+          Id="Package\Flujo de datos - Tiempo.Paths[OLE DB Source Output]"
+          TopLeft="292.2,186.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="106.8,0"
+              Start="0,0"
+              End="99.3000000000001,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="99.3000000000001,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Flujo de datos - Tiempo.Paths[Derived Column Output]"
+          TopLeft="548.6,182.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105.4,0"
+              Start="0,0"
+              End="97.8999999999999,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="97.8999999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Tiempo\Origen - Tiempo">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Tiempo\Destino - Tiempo">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Flujo de datos - Ventas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Flujo de datos - Ventas\Origen - Ventas"
+          TopLeft="160,146" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Flujo de datos - Ventas\Destino - Ventas"
+          TopLeft="549,156" />
+        <EdgeLayout
+          Id="Package\Flujo de datos - Ventas.Paths[OLE DB Source Output]"
+          TopLeft="312,166.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="237,10.0000000000001"
+              Start="0,0"
+              End="229.5,10.0000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="114.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="114.5,0"
+                    Point2="118.5,0"
+                    Point3="118.5,4" />
+                  <mssgle:LineSegment
+                    End="118.5,6.00000000000006" />
+                  <mssgle:CubicBezierSegment
+                    Point1="118.5,6.00000000000006"
+                    Point2="118.5,10.0000000000001"
+                    Point3="122.5,10.0000000000001" />
+                  <mssgle:LineSegment
+                    End="229.5,10.0000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Ventas\Destino - Ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Flujo de datos - Ventas\Origen - Ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
